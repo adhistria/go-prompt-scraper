@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"time"
 
@@ -53,7 +52,6 @@ func (s *service) Fetch(ctx context.Context, urls []string) error {
 }
 
 func (s *service) FetchDetail(ctx context.Context, url string) error {
-	fmt.Println("fetcg detauk")
 	s.validateUrl(ctx, url)
 	metadata, err := s.storage.FindBySite(ctx, metadata.ConvertUrlToPath(url))
 

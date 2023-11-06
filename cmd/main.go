@@ -17,12 +17,10 @@ import (
 )
 
 func main() {
-	fmt.Println("here")
 	mjr := file.NewMetadataJSONRepository()
 	srp := rest.NewScraperRepository()
 	s := service.NewService(srp, mjr)
 	var site string
-	fmt.Println("aneh nih")
 	app := &cli.App{
 		Name:  "fetch",
 		Usage: "get metadata of site that you want!",
@@ -35,25 +33,19 @@ func main() {
 			},
 		},
 		Action: func(ctx *cli.Context) error {
-			fmt.Println("action")
 			if site != "" {
-				fmt.Println("detail")
 				err := s.FetchDetail(ctx.Context, site)
 				if err != nil {
-					fmt.Println("error atas", err)
 					return err
 				}
 			} else {
-				fmt.Println("masuk ke else")
 				err := s.Fetch(ctx.Context, ctx.Args().Slice())
 				if err != nil {
-					fmt.Println("error bawah", err)
 					return err
 
 				}
 			}
 
-			fmt.Println("akhir")
 			return nil
 		},
 	}

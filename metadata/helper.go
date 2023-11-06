@@ -15,5 +15,5 @@ func ConvertUrlToPath(url string) string {
 		fileName = strings.Replace(url, "http://", "", -1)
 	}
 	fileName = strings.Replace(fileName, "/", "_", -1)
-	return fileName
+	return "output/" + fileName
 }

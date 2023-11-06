@@ -6,11 +6,11 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
-	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/adhistria/go-prompt-scraper/domain"
+	"github.com/adhistria/go-prompt-scraper/metadata"
 )
 
 type ScraperRepository struct{}
@@ -62,14 +62,7 @@ func (s *ScraperRepository) fetchHTML(body io.Reader) ([]byte, error) {
 }
 
 func (s *ScraperRepository) saveHTML(url string, html []byte) error {
-	fileName := url
-	if strings.Contains(url, "https") {
-		fileName = strings.Replace(url, "https://", "", -1)
-	} else {
-		fileName = strings.Replace(url, "http://", "", -1)
-	}
-	fileName = strings.Replace(fileName, "/", "_", -1)
-	err := ioutil.WriteFile(fileName+".html", html, 0644)
+	err := ioutil.WriteFile(metadata.ConvertUrlToPath(url), html, 0644)
 	if err != nil {
 		return err
 	}
