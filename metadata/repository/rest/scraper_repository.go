@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/adhistria/scraper-prompt/domain"
+	"github.com/adhistria/go-prompt-scraper/domain"
 )
 
 type ScraperRepository struct{}

@@ -1,4 +1,4 @@
-module github.com/adhistria/scraper-prompt
+module github.com/adhistria/go-prompt-scraper
 
 go 1.19
 

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/adhistria/scraper-prompt/domain"
-	"github.com/adhistria/scraper-prompt/metadata"
+	"github.com/adhistria/go-prompt-scraper/domain"
+	"github.com/adhistria/go-prompt-scraper/metadata"
 )
 
 type MetadataJSONRepository struct{}

@@ -5,10 +5,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/adhistria/scraper-prompt/metadata/repository/file"
-	"github.com/adhistria/scraper-prompt/metadata/repository/rest"
+	"github.com/adhistria/go-prompt-scraper/metadata/repository/file"
+	"github.com/adhistria/go-prompt-scraper/metadata/repository/rest"
 
-	"github.com/adhistria/scraper-prompt/metadata/service"
+	"github.com/adhistria/go-prompt-scraper/metadata/service"
 	"github.com/jmoiron/sqlx"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
