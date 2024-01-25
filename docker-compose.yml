@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    container_name: fetch
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_DRIVER=${DB_DRIVER}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+    depends_on:
+      - postgres
+    networks:
+      - scraper
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres_container
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - '5432:5432'
+    networks:
+      - scraper
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+  migrate:
+    image: migrate/migrate
+    networks:
+      - scraper
+    volumes:
+      - ./db/migrations:/migrations
+    command: ["-path", "/migrations", "-database",  "${DB_URL}", "up"]
+    links: 
+      - postgres
+    depends_on:
+      - postgres
+
+volumes:
+    postgres_db:
+networks:
+  scraper:
+    driver: bridge
